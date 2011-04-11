@@ -1,3 +1,4 @@
+<div id ="avatars_for_rails">
 <div class= "block">
   <div class = "content">
   <%= form_for Avatar.new,:html => { :multipart => true} do |f| %>
@@ -21,7 +22,8 @@
   <% end %>
   
 </div></div>
-<div id = "output2"></div>
+</div>
+
 
 <% content_for :javascript do%>
 $(document).ready(function() { 

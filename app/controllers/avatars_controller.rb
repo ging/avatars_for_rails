@@ -13,7 +13,7 @@ class AvatarsController < ApplicationController
   
     def new
     @avatars = Avatar.all
-
+    @avatar = Avatar.create(params[:avatar])
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -61,7 +61,7 @@ class AvatarsController < ApplicationController
   end
 
   def current_subject
-    return Actor.find(:all).first
+   # return Actor.find(:all).first
   end
   
 end
