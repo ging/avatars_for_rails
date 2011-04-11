@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency('foreigner', '~> 0.9.1')
 	s.add_runtime_dependency('paperclip', '~> 2.3.4')
 	s.add_runtime_dependency('rmagick','~> 2.13.1')	
-	s.add_runtime_dependency('inherited_resources', '~> 1.1.2')
+	
 
 	# Development Gem dependencies
 	#
