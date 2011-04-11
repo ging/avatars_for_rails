@@ -1,5 +1,5 @@
 require 'inherited_resources'
-
+require 'paperclip'
 
 module AvatarsForRails
  

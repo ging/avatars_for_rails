@@ -1,8 +1,26 @@
-class AvatarsController < InheritedResources::Base
+#class AvatarsController < InheritedResources::Base
+class AvatarsController < ApplicationController
 
+
+  def index
+    @avatars = Avatar.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      #format.xml { render :xml => @gastos }
+    end
+  end
   
-  def update
+    def new
+    @avatars = Avatar.all
 
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  def update
+  current_subject = Actor.find(:all).first
     if !current_subject.avatars.blank?
 
       new_logo = Avatar.find(params[:id])
@@ -24,7 +42,7 @@ class AvatarsController < InheritedResources::Base
 
   def create
     @avatar = Avatar.create(params[:avatar])
-
+    current_subject = Actor.find(:all).first
     if @avatar.new_record?
       render :new
     else
@@ -42,10 +60,5 @@ class AvatarsController < InheritedResources::Base
     end
   end
 
-  protected
-
-  def begin_of_association_chain
-    current_subject
-  end
 
 end

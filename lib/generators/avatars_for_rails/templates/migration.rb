@@ -1,11 +1,6 @@
-class CreateMailboxer < ActiveRecord::Migration
+class CreateAvatars < ActiveRecord::Migration
   def self.up    
   #Tables
-    create_table "actors", :force => true do |t|
-      t.string   "name"
-      t.string   "email",     :default => "", :null => false
-    end
-    
     create_table "avatars", :force => true do |t|
       t.integer  "actor_id"
       t.string   "logo_file_name"

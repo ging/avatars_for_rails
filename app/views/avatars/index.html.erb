@@ -1,18 +1,10 @@
-<% toolbar :profile => current_subject %>
+
 
 <% content_for :headers do %>
 <%= stylesheet_link_tag "avatars.css", :media => "screen, projection" %>
 <%= javascript_include_tag 'avatars.js' %>
 <% end %>
 
-<% content_for :sidebar do %>
-  <%= render :partial => 'home/sidebar' %>
-<% end %>
-
-<%= location(
-	link_to(image_tag("btn/btn_edit.png", :class => "menu_icon")+t('profile.one'), [current_subject,:profile]),	
-	link_to(image_tag("btn/edit.png", :class => "menu_icon")+t('avatar.other'), avatars_path)
-) %>
 
 <br class="clearfloat" />
 <div class="space_center"></div>
