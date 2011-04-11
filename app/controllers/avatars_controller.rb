@@ -11,12 +11,19 @@ class AvatarsController < ApplicationController
     end
   end
   
-    def new
+  def new
     @avatars = Avatar.all
     @avatar = Avatar.create(params[:avatar])
-    respond_to do |format|
-      format.html # new.html.erb
+    #debugger
+    
+    if params[:name].blank?
+      respond_to do |format|
+        format.html # new.html.erb
+      end
+    else
+      render :partial => 'precrop_drag' 
     end
+    
   end
 
   def update
@@ -44,7 +51,12 @@ class AvatarsController < ApplicationController
     @avatar = Avatar.create(params[:avatar])
     
     if @avatar.new_record?
-      render :new
+      #debugger
+      if params[:avatar][:drag].nil?
+        render :new
+      else
+        render :json => {:name => File.basename(@avatar.logo.queued_for_write[:original].path) }
+      end
     else
       @avatar.updating_logo = true
       @avatar.actor_id = current_subject.id

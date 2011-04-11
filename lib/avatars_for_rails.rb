@@ -1,4 +1,4 @@
-require 'inherited_resources'
+
 require 'paperclip'
 require 'ruby-debug'
 

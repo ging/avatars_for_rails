@@ -37,8 +37,11 @@
   <div id="show_pic"></div>
   <div id="show_crop"></div>
 </div>
+<br/>
+<br/>
+<br/>
 
-
+<div id= "pruebame">asdasdasd</div>
 
 <% content_for :javascript do%>
 $(document).ready(function() { 
@@ -109,7 +112,22 @@ function showResponse(responseText, statusText, xhr, $form)  {
               return $('<tr><td><img alt="Photo" width="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
           },
           onComplete: function (event, files, index, xhr, handler) { 
-                      
+             $("#pruebame").html(handler.response);
+             $.ajax({
+                type: "GET",
+                url: "/avatars/new/?name=" + handler.response.name,
+                success: function(data){
+                         $("#pruebame").html(data);
+                                 jQuery('#cropImage').Jcrop({
+                                    bgColor:     'clear',
+                                    bgOpacity:   .6,
+                                    setSelect:   [ 0, 0, 200, 200 ],
+                                    aspectRatio: 1 ,
+                                    onChange: update_crop,
+                                    onSelect: update_crop
+                                }); 
+                         }
+                });
           }
       });
   }); 

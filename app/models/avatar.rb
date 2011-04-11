@@ -57,11 +57,12 @@ class Avatar < ActiveRecord::Base
    def process_precrop
    	
   	if @name.blank? && (  logo.content_type.present? && !logo.content_type.start_with?("image/"))
-		logo.errors['invalidType'] = I18n.t('avatar.error.no_image_file')
-		return false
-	end
+		  logo.errors['invalidType'] = I18n.t('avatar.error.no_image_file')
+		  return false
+	  end
    	  	
-	return if !@name.blank?
+	  return if !@name.blank?
+    
       logo.errors['precrop'] = "You have to make precrop"
       resize_image(logo.queued_for_write[:original].path,500,500)
       Avatar.copy_to_temp_file(logo.queued_for_write[:original].path)   

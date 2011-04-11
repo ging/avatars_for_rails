@@ -3,7 +3,6 @@ PATH
   specs:
     avatars_for_rails (0.0.1)
       foreigner (~> 0.9.1)
-      inherited_resources (~> 1.1.2)
       paperclip (~> 2.3.4)
       rmagick (~> 2.13.1)
 
@@ -59,11 +58,7 @@ GEM
     foreigner (0.9.1)
     forgery (0.3.7)
       nokogiri (~> 1.4)
-    has_scope (0.5.0)
     i18n (0.5.0)
-    inherited_resources (1.1.2)
-      has_scope (~> 0.5.0)
-      responders (~> 0.6.0)
     json_pure (1.5.1)
     linecache (0.43)
     mail (2.2.15)
@@ -96,7 +91,6 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    responders (0.6.2)
     rmagick (2.13.1)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
