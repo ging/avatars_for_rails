@@ -1,0 +1,42 @@
+<%= render :partial => 'includes' %>
+
+
+<br class="clearfloat" />
+<div class="space_center"></div>
+<div class="space_center"></div>
+<% unless(@avatars.empty? || (@avatars.first.present? && @avatars.first.id.blank?)) %>
+  <h2><%=t('avatar.text.use') %></h2>
+  <div class="space_center"></div>
+  <div class="space_center"></div>
+  <div class="avatars">
+  <% @avatars.each do |avatar| %>
+    <% unless avatar.id.blank? %>
+    <%= div_for(avatar) do %>
+         <div class="boxgrid captionfull">
+           <%= image_tag(avatar.logo.url(:profile), :class => avatar.active ? 'default' : 'non_default', :size => '94x94') %>
+           <% if avatar.active %>    
+             <div class="cover boxcaption">    
+               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete %>
+             </div>  
+           <% else %>
+             <div class="cover boxcaption">    
+               <%= link_to "Set as default", avatar, :confirm => t('avatar.set_default_sure'), :method => :put %>
+               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete %>
+             </div>
+           <% end %>
+         </div>        
+      <% end %>
+      <% end %>
+  <% end %>
+  </div>
+  <br />
+  <br class="clearfloat" />
+  <div class="space_center"></div>
+  <div class="space_center"></div>
+  <h2><%=t('avatar.text.new') %></h2>
+<% else %>
+  <h2><%= t('avatar.new') %></h2>
+<% end %>
+
+
+

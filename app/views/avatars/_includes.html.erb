@@ -1,0 +1,12 @@
+<% content_for :headers do %>
+  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'jquery.Jcrop.min' %>
+  <%= javascript_include_tag 'jquery-ui.min' %>
+  <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'avatars' %>
+  <%= javascript_include_tag 'jquery.form' %>
+
+  <%= stylesheet_link_tag "jquery.Jcrop", :media => "screen, projection" %>
+  <%= stylesheet_link_tag "avatars", :media => "screen, projection" %><br/>
+  <%= stylesheet_link_tag "base", :media => "screen, projection" %>
+<%end%>

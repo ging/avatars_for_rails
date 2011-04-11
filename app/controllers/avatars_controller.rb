@@ -61,7 +61,7 @@ class AvatarsController < ApplicationController
   end
 
   def current_subject
-   # return Actor.find(:all).first
+    return Actor.find(:all).first
   end
   
 end

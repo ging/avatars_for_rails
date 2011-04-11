@@ -1,6 +1,7 @@
 <div id ="avatars_for_rails">
 <div class= "block">
   <div class = "content">
+<!--
   <%= form_for Avatar.new,:html => { :multipart => true} do |f| %>
   <div class="form_row">
   	<%= f.file_field :logo %>
@@ -10,8 +11,8 @@
   <div id= "prueba">
   </div>
   <% end %>
-  
-  <%= form_for Avatar.new,:html => { :multipart => true,:id =>"myForm"} do |f| %>
+-->  
+  <%= form_for Avatar.new,:html => { :multipart => true,:id =>"uploadForm"} do |f| %>
   <div class="form_row">
     <%= f.file_field :logo %>
 
@@ -32,7 +33,7 @@ $(document).ready(function() {
         success: showResponse
     }; 
  
-    $('#myForm').submit(function() { 
+    $('#uploadForm').submit(function() { 
         $(this).ajaxSubmit(options); 
         return false; 
     }); 
