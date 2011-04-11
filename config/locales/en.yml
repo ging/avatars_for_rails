@@ -1,0 +1,28 @@
+en:
+  actor:
+    name: "Name"
+  avatar:
+    crop_image: "Crop the uploaded image"
+    crop_submit: "Crop image"
+    destroy: "Delete"
+    destroy_sure: "Are you sure you wan't to delete the selected avatar?"
+    error:
+      no_file: "You have to select a file"
+      no_image_file: "The file you uploaded isn't valid, it must be an image file"
+    list: "You have these avatars"
+    new: "Create a new avatar"
+    new_short: "New avatar"
+    no_avatars: "You haven't any avatar, plesase create a new one."
+    one: "Avatar"
+    other: "Avatars"
+    original: "Original image"
+    preview: "Preview"
+    profile_change: "Change your avatar"
+    set_default: "Set as default"
+    set_default_sure: "Are you sure you wan't to set this avatar as default?"
+    text:
+      new: "... or upload a new one"
+      use: "Use your saved avatars ..."
+    upload: "Upload"
+
+
