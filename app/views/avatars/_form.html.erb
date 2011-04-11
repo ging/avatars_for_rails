@@ -9,4 +9,66 @@
   <div id= "prueba">
   </div>
   <% end %>
+  
+  <%= form_for Avatar.new,:html => { :multipart => true,:id =>"myForm"} do |f| %>
+  <div class="form_row">
+    <%= f.file_field :logo %>
+
+    <%= f.submit t('avatar.upload'), :class => "button" %>
+  </div>
+  <div id= "prueba">
+  </div>
+  <% end %>
+  
 </div></div>
+<div id = "output2"></div>
+
+<% content_for :javascript do%>
+$(document).ready(function() { 
+    var options = { 
+        target: '#avatars_for_rails',
+        success: showResponse
+    }; 
+ 
+    $('#myForm').submit(function() { 
+        $(this).ajaxSubmit(options); 
+        return false; 
+    }); 
+}); 
+
+function update_crop(coords) {
+  var rx = 100/coords.w;
+  var ry = 100/coords.h;
+  
+  if((coords.w == 0) || (coords.h == 0)){
+    rx = 100/$("#cropImage").width();
+    ry = 100/$("#cropImage").height();
+    coords.x = 0;
+    coords.y = 0;
+  }  
+  
+  $('#preview').css({
+    width: Math.round(rx * $("#cropImage").width()) + 'px',
+    height: Math.round(ry * $("#cropImage").height()) + 'px',
+    marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+    marginTop: '-' + Math.round(ry * coords.y) + 'px'
+  });
+  var ratio = 1;
+  $("#crop_x").val(Math.round(coords.x * ratio));
+  $("#crop_y").val(Math.round(coords.y * ratio));
+  $("#crop_w").val(Math.round(coords.w * ratio));
+  $("#crop_h").val(Math.round(coords.h * ratio));
+}
+
+function showResponse(responseText, statusText, xhr, $form)  { 
+        jQuery('#cropImage').Jcrop({
+            bgColor:     'clear',
+            bgOpacity:   .6,
+            setSelect:   [ 0, 0, 200, 200 ],
+            aspectRatio: 1 ,
+            onChange: update_crop,
+            onSelect: update_crop
+        }); 
+} 
+ <% end %>
+

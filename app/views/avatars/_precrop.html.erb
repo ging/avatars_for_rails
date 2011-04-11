@@ -19,7 +19,7 @@
   </div>
 </div>
 <% content_for :javascript do %>
-jQuery('#cropImage').Jcrop({
+/*jQuery('#cropImage').Jcrop({
             bgColor:     'clear',
             bgOpacity:   .6,
             setSelect:   [ 0, 0, 200, 200 ],
@@ -50,7 +50,7 @@ function update_crop(coords) {
   $("#crop_y").val(Math.round(coords.y * ratio));
   $("#crop_w").val(Math.round(coords.w * ratio));
   $("#crop_h").val(Math.round(coords.h * ratio));
-}
+}*/
 <% end %>
 
 <%= form_for @avatar, :html => { :multipart => true } do |f| %>

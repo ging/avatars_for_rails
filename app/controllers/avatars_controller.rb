@@ -20,7 +20,7 @@ class AvatarsController < ApplicationController
   end
 
   def update
-    debugger
+    
     if !current_subject.avatars.blank?
 
       new_logo = Avatar.find(params[:id])

@@ -4,11 +4,13 @@
   <%= javascript_include_tag 'jquery-ui.min' %>
   <%= javascript_include_tag 'rails' %>
   <%= javascript_include_tag 'avatars' %>
+  <%= javascript_include_tag 'jquery.form' %>
 
   <%= stylesheet_link_tag "jquery.Jcrop", :media => "screen, projection" %>
-  <%= stylesheet_link_tag "avatars", :media => "screen, projection" %>
+  <%= stylesheet_link_tag "avatars", :media => "screen, projection" %><br/>
+  <%= stylesheet_link_tag "base", :media => "screen, projection" %>
 <%end%>
-
+<div id ="avatars_for_rails">
 <br class="clearfloat" />
 <div class="space_center"></div>
 <div class="space_center"></div>
@@ -45,4 +47,6 @@
 <% else %>
   <h2><%= t('avatar.new') %></h2>
 <% end %>
+
 <%= render :partial => 'form' %>
+</div>
