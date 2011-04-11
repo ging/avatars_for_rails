@@ -20,6 +20,8 @@ class AvatarsController < ApplicationController
   end
 
   def update
+debugger
+=begin
   current_subject = Actor.find(:all).first
     if !current_subject.avatars.blank?
 
@@ -37,22 +39,23 @@ class AvatarsController < ApplicationController
       new_logo.save
       end
     end
+=end
     redirect_to avatars_path
   end
 
   def create
     @avatar = Avatar.create(params[:avatar])
-    current_subject = Actor.find(:all).first
+  #  current_subject = Actor.find(:all).first
     if @avatar.new_record?
       render :new
     else
       @avatar.updating_logo = true
-      @avatar.actor_id = current_subject.actor.id
-      if !current_subject.avatars.blank?
-        actual_logo = current_subject.avatars.active.first
-      actual_logo.active = false
-      actual_logo.save
-      end
+      #@avatar.actor_id = current_subject.actor.id
+      #if !current_subject.avatars.blank?
+      #  actual_logo = current_subject.avatars.active.first
+      #actual_logo.active = false
+      #actual_logo.save
+      #end
       @avatar.active = true
       @avatar.save
       redirect_to avatars_path

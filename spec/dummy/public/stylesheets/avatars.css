@@ -1,5 +1,8 @@
 /******************** Common ***********************/
-
+*{
+  font-family: Arial;
+  font-size: 11px;
+}
 /******************** Avatars ***********************/
 .avatars {
   padding-left: 10px;
