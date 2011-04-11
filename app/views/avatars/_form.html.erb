@@ -1,47 +1,34 @@
 <div id ="avatars_for_rails">
-<div class= "block">
-  <div class = "content">
-<!--
-  <%= form_for Avatar.new,:html => { :multipart => true} do |f| %>
-  <div class="form_row">
-  	<%= f.file_field :logo %>
+  <div class= "block">
+    <div class = "content">
+      <%= form_for Avatar.new,:html => { :multipart => true,:id =>"uploadForm"} do |f| %>
+        <div class="form_row">
+          <%= f.file_field :logo %>
 
-	  <%= f.submit t('avatar.upload'), :class => "button" %>
+          <%= f.submit t('avatar.upload'), :class => "button" %>
+        </div>
+              <div id= "prueba">
+              </div>
+      <% end %>
+    </div>
   </div>
-  <div id= "prueba">
-  </div>
-  <% end %>
--->  
-  <%= form_for Avatar.new,:html => { :multipart => true,:id =>"uploadForm"} do |f| %>
-  <div class="form_row">
-    <%= f.file_field :logo %>
 
-    <%= f.submit t('avatar.upload'), :class => "button" %>
-  </div>
-  <div id= "prueba">
-  </div>
-  <% end %>
-  
-</div></div>
-</div>
-
-<div class="files"> 
-  <%= form_for Avatar.new, :html => { :class => "upload", :multipart => true } do |f| %>
+  <div class="files"> 
+    <%= form_for Avatar.new, :html => { :class => "upload", :multipart => true } do |f| %>
       <%= f.file_field :logo %>
       <div>Upload files</div>
       <%= f.hidden_field :drag %>
-  <% end %>
+    <% end %>
 
-  <table class="upload_files"></table>
-  <table class="download_files"></table>
-  <div id="show_pic"></div>
-  <div id="show_crop"></div>
+    <table class="upload_files"></table>
+    <table class="download_files"></table>
+    <div id="show_pic"></div>
+    <div id="show_crop"></div>
+  </div>
+
+  <div id= "precrop_drag_response"></div>
 </div>
-<br/>
-<br/>
-<br/>
 
-<div id= "precrop_drag_response"></div>
 
 <% content_for :javascript do%>
 $(document).ready(function() { 
@@ -109,7 +96,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
                       '<\/div><\/td><\/tr>');
           },
           buildDownloadRow: function (file) {
-              //return $('<tr><td><img alt="Photo" width="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
+              
           },
           onComplete: function (event, files, index, xhr, handler) { 
              $.ajax({
