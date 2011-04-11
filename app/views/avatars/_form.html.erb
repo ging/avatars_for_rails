@@ -41,7 +41,7 @@
 <br/>
 <br/>
 
-<div id= "pruebame">asdasdasd</div>
+<div id= "precrop_drag_response"></div>
 
 <% content_for :javascript do%>
 $(document).ready(function() { 
@@ -109,15 +109,14 @@ function showResponse(responseText, statusText, xhr, $form)  {
                       '<\/div><\/td><\/tr>');
           },
           buildDownloadRow: function (file) {
-              return $('<tr><td><img alt="Photo" width="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
+              //return $('<tr><td><img alt="Photo" width="40" src="' + file.pic_path + '">' + file.name + '<\/td><\/tr>');
           },
           onComplete: function (event, files, index, xhr, handler) { 
-             $("#pruebame").html(handler.response);
              $.ajax({
                 type: "GET",
                 url: "/avatars/new/?name=" + handler.response.name,
                 success: function(data){
-                         $("#pruebame").html(data);
+                         $("#precrop_drag_response").html(data);
                                  jQuery('#cropImage').Jcrop({
                                     bgColor:     'clear',
                                     bgOpacity:   .6,
