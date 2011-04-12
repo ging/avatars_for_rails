@@ -15,7 +15,7 @@ class AvatarsController < ApplicationController
     @avatars = Avatar.all
     @avatar = Avatar.create(params[:avatar])
     
-    if params[:name].blank?
+    if params[:drag_name].blank?
       respond_to do |format|
         format.html # new.html.erb
       end

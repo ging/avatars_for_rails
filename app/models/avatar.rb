@@ -9,7 +9,7 @@ class Avatar < ActiveRecord::Base
                       :default_url => "/images/logos/:style/:subtype_class.png"
 	
 	before_post_process :process_precrop
-	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :name,:updating_logo,:drag
+	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :name,:updating_logo,:drag,:drag_name
 	validates_attachment_presence :logo, :if => :uploading_file?, :message => I18n.t('avatar.error.no_file')
 		
 	after_validation :precrop_done

@@ -101,7 +101,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
           onComplete: function (event, files, index, xhr, handler) { 
              $.ajax({
                 type: "GET",
-                url: "/avatars/new/?name=" + handler.response.name,
+                url: "/avatars/new/?drag_name=" + handler.response.name,
                 success: function(data){
                          $("#precrop_drag_response").html(data);
                                  jQuery('#cropImage').Jcrop({
