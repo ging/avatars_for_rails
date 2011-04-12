@@ -73,6 +73,16 @@ class AvatarsController < ApplicationController
     end
   end
 
+  def destroy
+    @avatar = Avatar.find(params[:id])
+    
+    if (@avatar.actor == current_subject)
+      @avatar.destroy
+    end
+    redirect_to avatars_path
+
+  end
+
   def current_subject
     return Actor.find(:all).first
   end
