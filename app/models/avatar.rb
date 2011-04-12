@@ -68,7 +68,7 @@ class Avatar < ActiveRecord::Base
    def process_precrop
    	
   	if @name.blank? && (  logo.content_type.present? && !logo.content_type.start_with?("image/"))
-		  logo.errors['invalidType'] = I18n.t('avatar.error.no_image_file')
+		  logo.errors['invalid_type'] = I18n.t('avatar.error.no_image_file')
 		  return false
 	  end
    	  	
@@ -89,7 +89,7 @@ class Avatar < ActiveRecord::Base
       img_orig.write(path)
       return true
      rescue
-       logo.errors['invalidType'] = I18n.t('avatar.error.no_image_file')
+       logo.errors['invalid_type'] = I18n.t('avatar.error.no_image_file')
        return false
      end
    end
@@ -98,7 +98,7 @@ class Avatar < ActiveRecord::Base
      begin
       img_orig = Magick::Image.read(path).first
      rescue
-       logo.errors['invalidType'] = I18n.t('avatar.error.no_image_file')
+       logo.errors['invalid_type'] = I18n.t('avatar.error.no_image_file')
        return false
      end
       

@@ -20,7 +20,13 @@ class AvatarsController < ApplicationController
         format.html # new.html.erb
       end
     else
-      render :partial => 'precrop_drag' 
+      #debugger
+      if Avatar.check_image_tmp_valid(params[:drag_name].to_s)
+        render :partial => 'precrop_drag'
+      else
+        @avatar.logo.errors['invalid_type'] = I18n.t('avatar.error.no_image_file')
+        render :partial => 'errors'
+      end 
     end
     
   end
@@ -50,8 +56,6 @@ class AvatarsController < ApplicationController
     @avatar = Avatar.create(params[:avatar])
     
     if @avatar.new_record?
-      #debugger
-      
       if (params[:avatar].blank? || params[:avatar][:drag].nil?)
         render :new
       else

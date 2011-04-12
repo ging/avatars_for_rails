@@ -1,17 +1,19 @@
-<%= render :partial => 'includes' %>
 
-<br class="clearfloat" />
-<div class="space_center"></div>
-<div class="space_center"></div>
-<div id="content_logo">
+
 <% if !@avatar.logo.errors['precrop'].blank? %>
+<%= render :partial => 'includes' %>
 	<h2><%= t('avatar.crop_image') %></h2>
 	<br class="clearfloat" />
   <div class="space_center"></div>
 	<%= render :partial => 'precrop' %>
+<% elsif !@avatar.errors.blank? %>
+  <%= render :partial => 'errors' %>
 <% else %>
-	<!--<h2><% t('avatar.new') %></h2>-->
+<%= render :partial => 'includes' %>
+  <br class="clearfloat" />
+  <div class="space_center"></div>
+  <div class="space_center"></div>
+  <div id="content_logo">
 	<%= render :partial => 'form' %>
 <% end %>
-</div>
-<% link_to 'Back', avatars_path %>
+
