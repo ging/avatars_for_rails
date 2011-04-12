@@ -1,3 +1,4 @@
+<% if Avatar.check_image_tmp_valid(File.basename(@avatar.logo.queued_for_write[:original].path.to_s)) %>
 <% my_file_name = File.basename(@avatar.logo.queued_for_write[:original].path) %>
 
 <div class = "block">
@@ -29,4 +30,4 @@
   <%= f.submit t('avatar.crop_submit'), :class => "button" %>
   </div>
   </div>
-<% end %>
+<% end %><% end %>

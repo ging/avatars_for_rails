@@ -1,4 +1,4 @@
-<% if Avatar.check_image_tmp_valid %>
+<% if Avatar.check_image_tmp_valid(params[:name].to_s) %>
   <% my_file_name = params[:name].to_s %>
   
   <div class = "block">

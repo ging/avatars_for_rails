@@ -55,6 +55,7 @@ class Avatar < ActiveRecord::Base
    end
 	   
 	 def self.check_image_tmp_valid(path)
+     
      begin
       path = File.join(Avatar.images_tmp_path,path)
       img_orig = Magick::Image.read(path).first
@@ -62,10 +63,8 @@ class Avatar < ActiveRecord::Base
      rescue
        return false
      end
-      
-    img_orig = img_orig.resize_to_fit(width, height)
-    img_orig.write(path)
    end
+   
    def process_precrop
    	
   	if @name.blank? && (  logo.content_type.present? && !logo.content_type.start_with?("image/"))
@@ -74,27 +73,25 @@ class Avatar < ActiveRecord::Base
 	  end
    	  	
 	  return if !@name.blank?
-    
-      
+
       if resize_image(logo.queued_for_write[:original].path,500,500)
         logo.errors['precrop'] = "You have to make precrop"
         Avatar.copy_to_temp_file(logo.queued_for_write[:original].path)
       else
         
-      end   
+      end
    end
       
    def resize_image(path,width,height)
      begin
       img_orig = Magick::Image.read(path).first
+      img_orig = img_orig.resize_to_fit(width, height)
+      img_orig.write(path)
       return true
      rescue
        logo.errors['invalidType'] = I18n.t('avatar.error.no_image_file')
        return false
      end
-      
-   	img_orig = img_orig.resize_to_fit(width, height)
-   	img_orig.write(path)
    end
    
    def make_precrop(path,x,y,width,height)
