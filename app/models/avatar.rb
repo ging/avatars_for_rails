@@ -53,7 +53,19 @@ class Avatar < ActiveRecord::Base
    		dimensions[:height] = img_orig.rows
    		dimensions
    end
-	
+	   
+	 def self.check_image_tmp_valid(path)
+     begin
+      path = File.join(Avatar.images_tmp_path,path)
+      img_orig = Magick::Image.read(path).first
+      return true
+     rescue
+       return false
+     end
+      
+    img_orig = img_orig.resize_to_fit(width, height)
+    img_orig.write(path)
+   end
    def process_precrop
    	
   	if @name.blank? && (  logo.content_type.present? && !logo.content_type.start_with?("image/"))

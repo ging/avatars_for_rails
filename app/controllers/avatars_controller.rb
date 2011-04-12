@@ -14,7 +14,6 @@ class AvatarsController < ApplicationController
   def new
     @avatars = Avatar.all
     @avatar = Avatar.create(params[:avatar])
-    #debugger
     
     if params[:name].blank?
       respond_to do |format|
