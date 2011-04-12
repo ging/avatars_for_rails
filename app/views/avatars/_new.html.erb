@@ -1,7 +1,4 @@
-
-
 <% if !@avatar.logo.errors['precrop'].blank? %>
-<%= render :partial => 'includes' %>
 	<h2><%= t('avatar.crop_image') %></h2>
 	<br class="clearfloat" />
   <div class="space_center"></div>
@@ -9,7 +6,6 @@
 <% elsif !@avatar.errors.blank? %>
   <%= render :partial => 'errors' %>
 <% else %>
-<%= render :partial => 'includes' %>
   <br class="clearfloat" />
   <div class="space_center"></div>
   <div class="space_center"></div>
