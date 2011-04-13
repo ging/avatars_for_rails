@@ -33,12 +33,12 @@ class AvatarsController < ApplicationController
 
   def update
     
-    if !current_subject.avatars.blank?
+    if current_avatarable_object.avatars.blank?
 
       new_logo = Avatar.find(params[:id])
 
-      if (new_logo.actor == current_subject)
-        actual_logo = current_subject.avatars.active.first
+      if (new_logo.actor == current_avatarable_object)
+        actual_logo = current_avatarable_object.avatars.active.first
         if !actual_logo.blank?
           actual_logo.active = false
           actual_logo.save
@@ -70,13 +70,15 @@ class AvatarsController < ApplicationController
         render :json => {:name => File.basename(@avatar.logo.queued_for_write[:original].path) }
       end
     else
+      #debugger
       @avatar.updating_logo = true
-      @avatar.actor_id = current_subject.id
-      if !current_subject.avatars.blank?
-        actual_logo = current_subject.avatars.active.first
-      actual_logo.active = false
-      actual_logo.save
+      @avatar.actor_id = current_avatarable_object.id
+      unless current_avatarable_object.avatars.blank?
+        actual_logo = current_avatarable_object.avatars.active.first
+        actual_logo.active = false
+        actual_logo.save
       end
+      
       @avatar.active = true
       @avatar.save
       redirect_to avatars_path
@@ -87,7 +89,7 @@ class AvatarsController < ApplicationController
   def destroy
     @avatar = Avatar.find(params[:id])
     
-    if (@avatar.actor == current_subject)
+    if (@avatar.actor == current_avatarable_object)
       @avatar.destroy
       respond_to do |format|
         format.js { render :layout=>false , :locals=>{:deleted_id => params[:id]}}
@@ -97,8 +99,8 @@ class AvatarsController < ApplicationController
 
   end
 
-  def current_subject
+  def current_avatarable_object
     return Actor.find(:all).first
   end
-  
+
 end
