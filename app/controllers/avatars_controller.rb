@@ -32,17 +32,21 @@ class AvatarsController < ApplicationController
   end
 
   def update
-    
-    if current_avatarable_object.avatars.blank?
+    #debugger
+    if !current_avatarable_object.avatars.blank?
 
       new_logo = Avatar.find(params[:id])
 
       if (new_logo.actor == current_avatarable_object)
         actual_logo = current_avatarable_object.avatars.active.first
-        if !actual_logo.blank?
-          actual_logo.active = false
-          actual_logo.save
+        unless actual_logo.blank?
+          #actual_logo.active = false
+          #actual_logo.save
           old_logo_id = actual_logo.id
+          current_avatarable_object.avatars.each do |old_logo|
+            old_logo.active = false
+            old_logo.save
+          end
         else
           old_logo_id = params[:id].to_s
         end
@@ -74,9 +78,13 @@ class AvatarsController < ApplicationController
       @avatar.updating_logo = true
       @avatar.actor_id = current_avatarable_object.id
       unless current_avatarable_object.avatars.blank?
-        actual_logo = current_avatarable_object.avatars.active.first
-        actual_logo.active = false
-        actual_logo.save
+        current_avatarable_object.avatars.each do |old_logo|
+          old_logo.active = false
+          old_logo.save
+        end
+        #actual_logo = current_avatarable_object.avatars.active.first
+        #actual_logo.active = false
+        #actual_logo.save
       end
       
       @avatar.active = true
