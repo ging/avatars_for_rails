@@ -10,6 +10,6 @@ class Mailboxer::InstallGenerator < Rails::Generators::Base #:nodoc:
   end
   
   def create_migration_file
-    migration_template 'migration.rb', 'db/migrate/create_mailboxer.rb'
+    migration_template 'migration.rb', 'db/migrate/create_avatars_for_rails.rb'
   end
 end
