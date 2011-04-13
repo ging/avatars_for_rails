@@ -81,8 +81,11 @@ class AvatarsController < ApplicationController
     
     if (@avatar.actor == current_subject)
       @avatar.destroy
+      respond_to do |format|
+        format.js { render :layout=>false , :locals=>{:deleted_id => params[:id]}}
+      end
     end
-    redirect_to avatars_path
+    #redirect_to avatars_path
 
   end
 

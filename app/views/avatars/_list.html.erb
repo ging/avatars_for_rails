@@ -5,7 +5,7 @@
   <h2><%=t('avatar.text.use') %></h2>
   <div class="space_center"></div>
   <div class="space_center"></div>
-  <div class="avatars">
+  <div class="avatars" id="all_avatars">
   <% @avatars.each do |avatar| %>
     <% unless avatar.id.blank? %>
     <%= div_for(avatar) do %>
@@ -13,12 +13,12 @@
            <%= image_tag(avatar.logo.url(:profile), :class => avatar.active ? 'default' : 'non_default', :size => '94x94') %>
            <% if avatar.active %>    
              <div class="cover boxcaption">    
-               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete %>
+               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete, :remote => true %>
              </div>  
            <% else %>
              <div class="cover boxcaption">    
                <%= link_to "Set as default", avatar, :confirm => t('avatar.set_default_sure'), :method => :put %>
-               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete %>
+               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete, :remote => true %>
              </div>
            <% end %>
          </div>        
