@@ -10,14 +10,14 @@
     <% unless avatar.id.blank? %>
     <%= div_for(avatar) do %>
          <div class="boxgrid captionfull">
-           <%= image_tag(avatar.logo.url(:profile), :class => avatar.active ? 'default' : 'non_default', :size => '94x94') %>
+           <%= image_tag(avatar.logo.url(:profile), :class => avatar.active ? 'default' : 'non_default', :size => '94x94', :id => "avatar_img_#{avatar.id}") %>
            <% if avatar.active %>    
              <div class="cover boxcaption">    
                <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete, :remote => true %>
              </div>  
            <% else %>
              <div class="cover boxcaption">    
-               <%= link_to "Set as default", avatar, :confirm => t('avatar.set_default_sure'), :method => :put %>
+               <%= link_to "Set as default", avatar, :confirm => t('avatar.set_default_sure'), :method => :put, :remote => true %>
                <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete, :remote => true %>
              </div>
            <% end %>

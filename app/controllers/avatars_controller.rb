@@ -42,14 +42,22 @@ class AvatarsController < ApplicationController
         if !actual_logo.blank?
           actual_logo.active = false
           actual_logo.save
+          old_logo_id = actual_logo.id
+        else
+          old_logo_id = params[:id].to_s
         end
 
       new_logo.active = true
       new_logo.save
+      
+      respond_to do |format|
+        format.js { render :layout=>false , :locals=>{:new_id => params[:id],:old_id => old_logo_id}}
+      end
+      
       end
     end
 
-    redirect_to avatars_path
+   # redirect_to avatars_path
   end
 
   def create
