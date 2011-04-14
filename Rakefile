@@ -1,7 +1,9 @@
 # encoding: UTF-8
 require 'rubygems'
+
 begin
   require 'bundler/setup'
+  require 'bundler'
 rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
@@ -21,5 +23,7 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.title    = 'AvatarsForRails'
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README.rdoc')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.rdoc_files.include('lib/**/*.rb', 'app/**/*.rb')
 end
+
+Bundler::GemHelper.install_tasks

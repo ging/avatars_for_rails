@@ -1,13 +1,6 @@
 # Provide a simple gemspec so you can easily use your enginex
 # project in your rails apps through git.
 Gem::Specification.new do |s|
-  s.name = "avatars_for_rails"
-  s.summary = "Insert AvatarsForRails summary."
-  s.description = "Insert AvatarsForRails description."
-  s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
-  s.version = "0.0.1"
-end
-Gem::Specification.new do |s|
 	s.name = "avatars_for_rails"
 	s.version = "0.0.1"
 	s.authors = ["Jaime Castro Montero"]
@@ -16,7 +9,7 @@ Gem::Specification.new do |s|
 	s.email = "jaime1988@gmail.com"
 	s.homepage = "http://github.com/ging/avatars_for_rails"
 	s.files = `git ls-files`.split("\n")
-
+  #s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
 	# Gem dependencies
 	#
 	# SQL foreign keys
