@@ -13,9 +13,7 @@ and run:
 
   bundle update
 
-Then:
-  
-  If you have a class named actor and you want it to have avatars, run:
+Then, if you have a class named actor and you want it to have avatars, run:
 
   rails generate avataras_for_rails:install actor
 
@@ -30,17 +28,17 @@ Do not forget to migrate your database
   
 In your application layout you have to add  this on the <head> label:
 
-<head>
-  <% stylesheet_link_tag :all %>
-  <% javascript_include_tag :defaults %>
-  <%= yield :headers %>
-  <%= csrf_meta_tag %>
-  <script type="text/javascript" charset="utf-8">
-      $(document).ready(function() {
-        <%= yield :javascript %>
-      })
-  </script>
-</head>
+  <head>
+    <% stylesheet_link_tag :all %>
+    <% javascript_include_tag :defaults %>
+    <%= yield :headers %>
+    <%= csrf_meta_tag %>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+          <%= yield :javascript %>
+        })
+    </script>
+  </head>
 
 In config/initializers/avatars_for_rails.rb  you have to change:
 
