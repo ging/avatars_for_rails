@@ -3,7 +3,7 @@ AvatarsForRails.setup do |config|
   # Remember you must add an "actor_id" foreign key column to your migration!
   #
   # config.actors = [:user, :group ]
-    config.avatarable_model = :file_name
+    config.avatarable_model = :<%= file_name %>
   # Include devise modules in User. See devise documentation for details.
   # Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable, :validatable
