@@ -1,4 +1,4 @@
-class CreateAvatars < ActiveRecord::Migration
+class CreateAvatarsForRails<%= file_name.camelize %> < ActiveRecord::Migration
   def self.up    
   #Tables
     create_table "avatars", :force => true do |t|

@@ -4,12 +4,3 @@ AvatarsForRails.setup do |config|
 
 end
 
-AvatarsController
-
-class AvatarsController
-  
-  def current_avatarable_object
-    return current_<%= file_name %>
-  end
-  
-end
