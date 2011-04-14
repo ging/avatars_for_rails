@@ -20,6 +20,6 @@ class AvatarsForRails::InstallGenerator < Rails::Generators::NamedBase #:nodoc:
   end
   
   def create_migration_file
-    migration_template 'migration.rb', 'db/migrate/create_avatars_for_rails.rb'
+    migration_template 'migration.rb', 'db/migrate/create_avatars_for_rails_' + file_name + '.rb'
   end
 end

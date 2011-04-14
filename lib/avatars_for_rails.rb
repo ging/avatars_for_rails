@@ -1,6 +1,6 @@
 
 require 'paperclip'
-require 'ruby-debug'
+#require 'ruby-debug'
 
 module AvatarsForRails
  
