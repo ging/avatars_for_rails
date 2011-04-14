@@ -14,8 +14,8 @@ class Avatar < ActiveRecord::Base
 		
 	after_validation :precrop_done
 	
-	belongs_to :actor
-	#belongs_to AvatarForRails.avatarable_model
+	#belongs_to :actor
+	belongs_to AvatarsForRails.avatarable_model
 	
 	scope :active, where(:active => true)
 	

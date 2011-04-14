@@ -10,7 +10,6 @@ class AvatarsForRails::InstallGenerator < Rails::Generators::NamedBase #:nodoc:
   require 'rails/generators/active_record'
   
   def create_initializer_file
-    #copy_file 'initializer.rb', 'config/initializers/avatars_for_rails.rb'
     template 'initializer.rb', 'config/initializers/avatars_for_rails.rb'
   end
 
