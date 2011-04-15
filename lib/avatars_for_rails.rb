@@ -13,6 +13,13 @@ module AvatarsForRails
    end
  
   class Engine < Rails::Engine
+    
+    config.to_prepare do
+      class AvatarsController 
+        include AvatarsControllerConfig
+      end
+    end
+    
   end
   
 end
