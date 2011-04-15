@@ -18,6 +18,10 @@ class Avatar < ActiveRecord::Base
 	belongs_to AvatarsForRails.avatarable_model
 	
 	scope :active, where(:active => true)
+
+        def avatarable
+          __send__ AvatarsForRails.avatarable_model # __send__ :actor
+        end
 	
   	def uploading_file?
     	return @name.blank?
