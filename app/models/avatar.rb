@@ -19,6 +19,24 @@ class Avatar < ActiveRecord::Base
 
   scope :active, where(:active => true)
   
+  before_create :make_active
+  after_create :disable_old
+   
+   def make_active
+     self.updating_logo = true
+     self.active = true
+   end
+  
+  def disable_old
+      #unless self.avatarable.avatars.blank?
+        self.avatarable.avatars.where("id != ?", self.id).each do |old_logo|
+          old_logo.update_attribute :active, false
+        end
+      #end
+  end
+  
+  
+  
   def avatarable
     __send__ AvatarsForRails.avatarable_model # __send__ :actor
   end

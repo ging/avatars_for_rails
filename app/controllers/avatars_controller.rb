@@ -63,7 +63,7 @@ class AvatarsController < ApplicationController
   end
 
   def create
-    @avatar = Avatar.create(params[:avatar])
+    @avatar = current_avatarable_object.avatars.create(params[:avatar])
 
     if @avatar.new_record?
       if (params[:avatar].blank? || params[:avatar][:drag].nil?)
@@ -73,20 +73,17 @@ class AvatarsController < ApplicationController
       end
     else
     #debugger
-      @avatar.updating_logo = true
-      @avatar.avatarable.id = current_avatarable_object.id
-      unless current_avatarable_object.avatars.blank?
-        current_avatarable_object.avatars.each do |old_logo|
-          old_logo.active = false
-          old_logo.save
-        end
-      #actual_logo = current_avatarable_object.avatars.active.first
-      #actual_logo.active = false
-      #actual_logo.save
-      end
-
-      @avatar.active = true
-      @avatar.save
+      #@avatar.updating_logo = true
+      #@avatar.avatarable.id = current_avatarable_object.id
+#      unless current_avatarable_object.avatars.blank?
+#        current_avatarable_object.avatars.each do |old_logo|
+#          old_logo.active = false
+#          old_logo.save
+#        end
+#      end
+      #debugger
+      #@avatar.active = true
+      #@avatar.save
       redirect_to avatars_path
 
     end

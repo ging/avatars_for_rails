@@ -15,7 +15,7 @@ module AvatarsForRails
   class Engine < Rails::Engine
     
     config.to_prepare do
-      class AvatarsController 
+      AvatarsController.class_eval do 
         include AvatarsControllerConfig
       end
     end

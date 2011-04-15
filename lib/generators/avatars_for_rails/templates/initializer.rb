@@ -6,7 +6,7 @@ end
 
 AvatarsController
 
-class AvatarsController
+class AvatarsControllerConfig
   
   def current_avatarable_object
     return current_<%= file_name %>
