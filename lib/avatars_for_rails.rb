@@ -4,7 +4,7 @@ require 'paperclip'
 
 module AvatarsForRails
  
-  #autoload :AvatarsControllerConfig,   'avatars_for_rails/avatars_controller_config'
+  autoload :AvatarsControllerConfig,   'avatars_for_rails/avatars_controller_config'
  
   mattr_accessor :avatarable_model
   
