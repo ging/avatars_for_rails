@@ -2,7 +2,8 @@
 class AvatarsController < ApplicationController
   def index
     #@avatars = Avatar.all
-    @avatars = Avatar.where({(AvatarsForRails.avatarable_model.to_s + "_id").to_sym => current_avatarable_object.id})
+    #@avatars = Avatar.where({(AvatarsForRails.avatarable_model.to_s + "_id").to_sym => current_avatarable_object.id})
+    @avatars = current_avatarable_object.avatars
 
     respond_to do |format|
       format.html # index.html.erb
