@@ -37,7 +37,7 @@ class AvatarsController < ApplicationController
 
       new_logo = Avatar.find(params[:id])
 
-      if (new_logo.avatarable == current_avatarable_object)
+      if (new_logo.avatarable == current_avatarable_object.actor)
         actual_logo = current_avatarable_object.avatars.active.first
         unless actual_logo.blank?
           #actual_logo.active = false
@@ -95,7 +95,7 @@ class AvatarsController < ApplicationController
   def destroy
     @avatar = Avatar.find(params[:id])
 
-    if (@avatar.avatarable == current_avatarable_object)
+    if (@avatar.avatarable == current_avatarable_object.actor)
       @avatar.destroy
       respond_to do |format|
         format.js { render :layout=>false , :locals=>{:deleted_id => params[:id]}}

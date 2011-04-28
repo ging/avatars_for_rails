@@ -4,3 +4,4 @@ $("#avatar_img_<%= old_id %>").addClass("non_default");
 $("#avatar_img_<%= new_id %>").removeClass("non_default");
 $("#avatar_img_<%= new_id %>").addClass("default");
 
+$("#current_avatar_img").attr('src', $("#avatar_img_<%= new_id %>").attr('src') );
