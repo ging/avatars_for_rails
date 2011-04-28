@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
 	# Development Gem dependencies
 	#
-	s.add_development_dependency('rails', '~> 3.0.5')
+	s.add_development_dependency('rails', '>= 3.0.5')
 	# Testing database
 	s.add_development_dependency('sqlite3-ruby')
 	# Debugging

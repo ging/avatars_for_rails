@@ -104,6 +104,10 @@ class AvatarsController < ApplicationController
 
   end
 
+  def current_avatarable_object
+    __send__ AvatarsForRails.current_avatarable_object
+  end
+
   #def current_avatarable_object
     #return Actor.find(:all).first
   #end

@@ -4,25 +4,26 @@ require 'paperclip'
 
 module AvatarsForRails
  
-  autoload :AvatarsControllerConfig,   'avatars_for_rails/avatars_controller_config'
+  #autoload :AvatarsControllerConfig,   'avatars_for_rails/avatars_controller_config'
  
   mattr_accessor :avatarable_model
+  mattr_accessor :current_avatarable_object
   
    class << self
     def setup
       yield self
     end
    end
- 
+
   class Engine < Rails::Engine
-    
-    config.to_prepare do
+=begin    
+    config.to_prepare do   
       AvatarsController.class_eval do 
         #include AvatarsForRails::AvatarsControllerConfig
         include AvatarsControllerConfig
-      end
+      end      
     end
-    
+=end      
   end
-  
+
 end
