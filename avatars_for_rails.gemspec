@@ -2,7 +2,7 @@
 # project in your rails apps through git.
 Gem::Specification.new do |s|
 	s.name = "avatars_for_rails"
-	s.version = "0.0.6"
+	s.version = "0.0.7"
 	s.authors = ["Jaime Castro Montero"]
 	s.summary = "Avatar manager for rails apps."
 	s.description = "A Rails engine that allows any model to act as avatarable, permitting it to have a complete avatar manager with a few options."

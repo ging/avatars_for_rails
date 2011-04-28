@@ -135,3 +135,6 @@ form.file_upload button,
 .file_upload .ui-widget {
   font-size: 1em;
 }
+.files{
+  margin-left: 20px;
+}
