@@ -4,7 +4,7 @@ en:
   avatar:
     crop_image: "Crop the uploaded image"
     crop_submit: "Crop image"
-    destroy: "Delete"
+    destroy: "Delete avatar"
     destroy_sure: "Are you sure you wan't to delete the selected avatar?"
     error:
       no_file: "You have to select a file"

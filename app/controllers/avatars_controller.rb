@@ -69,7 +69,7 @@ class AvatarsController < ApplicationController
     if @avatar.new_record?
       #debugger
       if (params[:avatar].blank? || params[:avatar][:drag].nil?)
-        render :partial => :new, :layout => false
+        render :new, :layout => false
       else
         render :json => {:name => File.basename(@avatar.logo.queued_for_write[:original].path) }
       end
