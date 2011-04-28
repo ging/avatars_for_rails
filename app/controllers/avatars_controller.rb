@@ -32,7 +32,7 @@ class AvatarsController < ApplicationController
   end
 
   def update
-    #debugger
+    
     if !current_avatarable_object.avatars.blank?
 
       new_logo = Avatar.find(params[:id])
@@ -40,8 +40,7 @@ class AvatarsController < ApplicationController
       if (new_logo.avatarable == current_avatarable_object.actor)
         actual_logo = current_avatarable_object.avatars.active.first
         unless actual_logo.blank?
-          #actual_logo.active = false
-          #actual_logo.save
+          return if new_logo == actual_logo
           old_logo_id = actual_logo.id
           current_avatarable_object.avatars.each do |old_logo|
             old_logo.active = false
@@ -57,7 +56,7 @@ class AvatarsController < ApplicationController
         respond_to do |format|
           format.js { render :layout=>false , :locals=>{:new_id => params[:id],:old_id => old_logo_id}}
         end
-
+        
       end
     end
 
