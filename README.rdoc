@@ -58,6 +58,8 @@ Now, if you go to /avatars you will see:
 * A list of all the avatars for the current actor. You can change the default and delete avatars in this list.  
 * Forms for creating a new avatar with two options. A typical file filed or a drag and drop file field
 
+Of course, you can overwrite the index.html.erb so you can personalize the index.
+
 For rendering the avatars list:
   <%= render :partial => 'list' %>
   
