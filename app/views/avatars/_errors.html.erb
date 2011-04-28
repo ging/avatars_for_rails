@@ -1,6 +1,5 @@
 <br class="clearfloat" />
-<div class="space_center"></div>
 
-<% unless @avatar.logo.errors["invalid_type"].blank?%>
-  <%= @avatar.logo.errors["invalid_type"]%>
+<% @avatar.errors.each do |error| %>
+  <%= error[1]%><br/><br/>
 <% end %>

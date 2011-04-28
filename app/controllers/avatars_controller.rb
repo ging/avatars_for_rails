@@ -14,7 +14,7 @@ class AvatarsController < ApplicationController
   def new
     @avatars = Avatar.all
     @avatar = Avatar.create(params[:avatar])
-
+    
     if params[:drag_name].blank?
       respond_to do |format|
         format.html # new.html.erb
@@ -66,10 +66,11 @@ class AvatarsController < ApplicationController
 
   def create
     @avatar = current_avatarable_object.avatars.create(params[:avatar])
-
+  #debugger
     if @avatar.new_record?
+      #debugger
       if (params[:avatar].blank? || params[:avatar][:drag].nil?)
-        render :new
+        render :new, :layout => false
       else
         render :json => {:name => File.basename(@avatar.logo.queued_for_write[:original].path) }
       end
@@ -101,15 +102,11 @@ class AvatarsController < ApplicationController
       end
     end
   #redirect_to avatars_path
-
   end
 
   def current_avatarable_object
     __send__ AvatarsForRails.current_avatarable_object
+   #return Actor.find(:all).first
   end
-
-  #def current_avatarable_object
-    #return Actor.find(:all).first
-  #end
 
 end
