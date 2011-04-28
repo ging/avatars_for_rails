@@ -8,3 +8,4 @@ spec/dummy/public/images/tmp/
 spec/dummy/public/system/
 *.DS_Store
 .project
+*.gem
