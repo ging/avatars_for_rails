@@ -8,19 +8,13 @@
   <div class="avatars" id="all_avatars">
   <% @avatars.each do |avatar| %>
     <% unless avatar.id.blank? %>
-    <%= div_for(avatar) do %>
-         <div class="boxgrid captionfull">
-           <%= image_tag(avatar.logo.url(:profile), :class => avatar.active ? 'default' : 'non_default', :size => '94x94', :id => "avatar_img_#{avatar.id}") %>
-           <% if avatar.active %>    
-             <div class="cover boxcaption">    
-               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete, :remote => true %>
-             </div>  
-           <% else %>
-             <div class="cover boxcaption">    
-               <%= link_to "Set as default", avatar, :confirm => t('avatar.set_default_sure'), :method => :put, :remote => true %>
-               <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete, :remote => true %>
-             </div>
-           <% end %>
+      <%= div_for(avatar) do %>
+        <div class="boxgrid captionfull">
+          <%= image_tag(avatar.logo.url(:profile), :class => avatar.active ? 'default' : 'non_default', :size => '94x94', :id => "avatar_img_#{avatar.id}") %>
+          <div class="cover boxcaption"> 
+            <%= link_to "Set as default", avatar, :confirm => t('avatar.set_default_sure'), :method => :put, :remote => true, :id => "avatar_link_#{avatar.id}", :style => avatar.active ? 'display:none;': 'display:solid;' %>
+            <%= link_to "Delete avatar", avatar, :confirm => t('avatar.destroy_sure'), :method => :delete, :remote => true %>
+          </div>  
          </div>        
       <% end %>
       <% end %>

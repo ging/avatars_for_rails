@@ -1,7 +1,9 @@
 $("#avatar_img_<%= old_id %>").removeClass("default");
 $("#avatar_img_<%= old_id %>").addClass("non_default");
+$("#avatar_link_<%= old_id %>").show();
 
 $("#avatar_img_<%= new_id %>").removeClass("non_default");
 $("#avatar_img_<%= new_id %>").addClass("default");
+$("#avatar_link_<%= new_id %>").hide();
 
 $("#current_avatar_img").attr('src', $("#avatar_img_<%= new_id %>").attr('src') );
