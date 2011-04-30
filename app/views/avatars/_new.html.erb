@@ -1,17 +1,7 @@
 <% if !@avatar.logo.errors['precrop'].blank? %>
-	<!--<h2><%= t('avatar.crop_image') %></h2>
-	<br class="clearfloat" />
-  <div class="space_center"></div>
--->
 	<%= render :partial => 'precrop' %>
 <% elsif !@avatar.errors.blank? %>
   <%= render :partial => 'errors' %>
 <% else %>
-<!--  <br class="clearfloat" />
-  <div class="space_center"></div>
-  <div class="space_center"></div>
-  <div id="content_logo">
-	<%= render :partial => 'form' %>
--->
 <% end %>
 

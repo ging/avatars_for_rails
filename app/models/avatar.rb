@@ -17,27 +17,22 @@ class Avatar < ActiveRecord::Base
   belongs_to AvatarsForRails.avatarable_model
 
   scope :active, where(:active => true)
-  
+
   before_create :make_active
   after_create :disable_old
-   
-   def make_active
-     self.updating_logo = true
-     self.active = true
-   end
-  
-  def disable_old
-      #unless self.avatarable.avatars.blank?
-        self.avatarable.avatars.where("id != ?", self.id).each do |old_logo|
-          old_logo.update_attribute :active, false
-        end
-      #end
+  def make_active
+    self.updating_logo = true
+    self.active = true
   end
-  
-  
-  
+
+  def disable_old
+    self.avatarable.avatars.where("id != ?", self.id).each do |old_logo|
+      old_logo.update_attribute :active, false
+    end
+  end
+
   def avatarable
-    __send__ AvatarsForRails.avatarable_model # __send__ :actor
+    __send__ AvatarsForRails.avatarable_model
   end
 
   def uploading_file?

@@ -8,6 +8,7 @@ module AvatarsForRails
  
   mattr_accessor :avatarable_model
   mattr_accessor :current_avatarable_object
+  mattr_accessor :avatarable_filters
   
    class << self
     def setup
