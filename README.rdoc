@@ -46,11 +46,16 @@ In config/initializers/avatars_for_rails.rb  you have to define:
     config.avatarable_model = :actor
     config.current_avatarable_object = :current_actor
     config.avatarable_filters = [:authenticate_user!]
+    config.avatarable_styles = { :representation => "20x20>",
+                                   :tie => "30x30>",
+                                   :actor => '35x35>',
+                                   :profile => '94x94'}
   end
 
 * actor is the name of the object owner of the avatars    
 * current_actor will return the actor you wants to be the owner of the new avatars, etc For example, you can return the current logged in actor. This method can be defined on the application_controller of your app.
 * authenticate_user! is the filter which will be applied as a before_filter for the avatars. You can use as many as you want.
+* styles are the styles you want to have for your avatars. You can use your own sizes.
 
 Finally, add to your actor model the relation with avatars_for_rails:
 
@@ -95,11 +100,3 @@ If you wan't to display an actor's active avatar:
   <%= image_tag(actor.avatars.active.first, :id => "current_avatar_img") %>
   
 The id of the image it's important. If it's set like this, when you change the default avatar from the list, it will change the avatar shown on the image with jquery.
-  
-The avaible styles for now are:
-
-  :representation => 20x20 px
-  :tie => 30x30 px
-  :actor => 35x35 px
-  :profile => 94x94 px
- 
