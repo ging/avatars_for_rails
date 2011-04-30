@@ -45,10 +45,12 @@ In config/initializers/avatars_for_rails.rb  you have to define:
   AvatarsForRails.setup do |config|
     config.avatarable_model = :actor
     config.current_avatarable_object = :current_actor
+    config.avatarable_filters = [:authenticate_user!]
   end
 
 * actor is the name of the object owner of the avatars    
 * current_actor will return the actor you wants to be the owner of the new avatars, etc For example, you can return the current logged in actor. This method can be defined on the application_controller of your app.
+* authenticate_user! is the filter which will be applied as a before_filter for the avatars. You can use as many as you want.
 
 Finally, add to your actor model the relation with avatars_for_rails:
 
