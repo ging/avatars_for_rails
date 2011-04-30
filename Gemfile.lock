@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    avatars_for_rails (0.0.7)
+    avatars_for_rails (0.0.8)
       foreigner (~> 0.9.1)
       paperclip (~> 2.3.4)
       rmagick (~> 2.13.1)

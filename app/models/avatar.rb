@@ -2,10 +2,7 @@ require 'RMagick'
 
 class Avatar < ActiveRecord::Base
   has_attached_file :logo,
-                      :styles => { :representation => "20x20>",
-                                   :tie => "30x30>",
-                                   :actor => '35x35>',
-                                   :profile => '94x94' },
+                      :styles => AvatarsForRails.avatarable_styles,
                       :default_url => "/images/logos/:style/:subtype_class.png"
 
   before_post_process :process_precrop
