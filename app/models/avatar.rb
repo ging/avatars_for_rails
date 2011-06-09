@@ -3,7 +3,7 @@ require 'RMagick'
 class Avatar < ActiveRecord::Base
   has_attached_file :logo,
                       :styles => AvatarsForRails.avatarable_styles,
-                      :default_url => "/images/logos/:style/:subtype_class.png"
+                      :default_url => "logos/:style/:subtype_class.png"
 
   before_post_process :process_precrop
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :name,:updating_logo,:drag,:drag_name
@@ -50,7 +50,7 @@ class Avatar < ActiveRecord::Base
   end
 
   def self.images_tmp_path
-    images_path = File.join(RAILS_ROOT, "public", "images")
+    images_path = File.join(Rails.root, "public", "images")
     tmp_path = FileUtils.mkdir_p(File.join(images_path, "tmp"))
   end
 
