@@ -9,3 +9,4 @@ spec/dummy/public/system/
 *.DS_Store
 .project
 *.gem
+Gemfile.lock
