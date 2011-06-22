@@ -1,5 +1,6 @@
 <div id ="avatars_for_rails">
-  <div class= "block">
+<!--  
+<div class= "block">
     <div class = "content">
       <%= form_for Avatar.new,:html => { :multipart => true,:id =>"uploadForm"} do |f| %>
         <div class="form_row">
@@ -7,16 +8,17 @@
 
           <%= f.submit t('avatar.upload'), :class => "button" %>
         </div>
-              <div id= "prueba">
-              </div>
+        <div id= "prueba">
+        </div>
       <% end %>
     </div>
+  
   </div>
-
+-->
   <div class="files"> 
     <%= form_for Avatar.new, :html => { :class => "upload", :multipart => true } do |f| %>
-      <%= f.file_field :logo %>
-      <div>Upload files</div>
+      <%= f.file_field :logo, :id=> "avatar_logo_drag" %>
+      <!--<div>Upload files</div>-->
       <%= f.hidden_field :drag %>
     <% end %>
 
