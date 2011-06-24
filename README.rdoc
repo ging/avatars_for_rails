@@ -18,7 +18,6 @@ Then, if you have a class named actor and you want it to have avatars, run:
   rails generate avatars_for_rails:install actor
 
 This will generate the following:
-* A public/ file with the js and css files required.
 * A initializer file with configuration for avatars_for_rails.
 * A migration providing the database schema for using avatars_for_rails with the actor class.
 
