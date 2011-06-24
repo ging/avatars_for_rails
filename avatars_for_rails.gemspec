@@ -2,10 +2,10 @@
 # project in your rails apps through git.
 Gem::Specification.new do |s|
 	s.name = "avatars_for_rails"
-	s.version = "0.0.10"
+	s.version = "0.1.0"
 	s.authors = ["Jaime Castro Montero"]
 	s.summary = "Avatar manager for rails apps."
-	s.description = "A Rails engine that allows any model to act as avatarable, permitting it to have a complete avatar manager with a few options."
+	s.description = "A Rails engine that allows any model to act as avatarable, permitting it to have a complete avatar manager with a few options. Adapted to rails 3.1.0"
 	s.email = "jaime1988@gmail.com"
 	s.homepage = "http://github.com/ging/avatars_for_rails"
 	s.files = `git ls-files`.split("\n")
@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
 	# Development Gem dependencies
 	#
-	s.add_development_dependency('rails', '>= 3.0.5')
+	s.add_development_dependency('rails', '>= 3.1.0.rc4')
 	# Testing database
 	s.add_development_dependency('sqlite3-ruby')
 	# Debugging
