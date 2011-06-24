@@ -10,3 +10,4 @@ spec/dummy/public/system/
 .project
 *.gem
 Gemfile.lock
+rdoc/*

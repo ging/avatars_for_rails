@@ -1,6 +1,8 @@
 require 'RMagick'
 
 class Avatar < ActiveRecord::Base
+  
+  #Paperclip configuration.
   has_attached_file :logo,
                       :styles => AvatarsForRails.avatarable_styles,
                       :default_url => "logos/:style/:subtype_class.png"
@@ -17,11 +19,14 @@ class Avatar < ActiveRecord::Base
 
   before_create :make_active
   after_create :disable_old
+  
+  #This method helps when changing the active logo for a user.
   def make_active
     self.updating_logo = true
     self.active = true
   end
 
+  #Disable all the user's logos except the actual.
   def disable_old
     self.avatarable.avatars.where("id != ?", self.id).each do |old_logo|
       old_logo.update_attribute :active, false
@@ -36,6 +41,7 @@ class Avatar < ActiveRecord::Base
     return @name.blank?
   end
 
+  #Process the seccond step. It makes the precrop of the image and create a new avatar with the croped image.
   def precrop_done
     return if @name.blank? || !@updating_logo.blank?
 
@@ -49,15 +55,18 @@ class Avatar < ActiveRecord::Base
     FileUtils.remove_file(precrop_path)
   end
 
+  #Returns the avatars_for_rails temp directory.
   def self.images_tmp_path
     images_path = File.join(Rails.root, "public", "images")
     tmp_path = FileUtils.mkdir_p(File.join(images_path, "tmp"))
   end
 
+  #This method copies a file to the avatars_for_rails temp directory.
   def self.copy_to_temp_file(path)
     FileUtils.cp(path,Avatar.images_tmp_path)
   end
 
+  #Returns the height and widht of an image.
   def self.get_image_dimensions(name)
     img_orig = Magick::Image.read(name).first
     dimensions = {}
@@ -66,6 +75,7 @@ class Avatar < ActiveRecord::Base
     dimensions
   end
 
+  #Checks if a file is valid for being an avatar.
   def self.check_image_tmp_valid(path)
 
     begin
@@ -77,6 +87,7 @@ class Avatar < ActiveRecord::Base
     end
   end
 
+  #Process the image in the first step of the process. It resizes the image and copy it to the avatars_for_rails temp directory.
   def process_precrop
 
     if @name.blank? && (  logo.content_type.present? && !logo.content_type.start_with?("image/"))
@@ -94,6 +105,7 @@ class Avatar < ActiveRecord::Base
     end
   end
 
+  #Resizes an image with the options passed as arguments.
   def resize_image(path,width,height)
     begin
       img_orig = Magick::Image.read(path).first
@@ -106,6 +118,7 @@ class Avatar < ActiveRecord::Base
     end
   end
 
+  #Precrop an image with the options passed as arguments.
   def make_precrop(path,x,y,width,height)
     begin
       img_orig = Magick::Image.read(path).first

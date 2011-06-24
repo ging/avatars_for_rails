@@ -1,5 +1,6 @@
 class AvatarsController < ApplicationController
   
+  #Apply the filters configured in avatars_for_rails initializer
   before_filter :apply_existing_filters
   
   def index
