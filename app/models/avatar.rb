@@ -1,7 +1,7 @@
 require 'RMagick'
 
 class Avatar < ActiveRecord::Base
-  
+
   #Paperclip configuration.
   has_attached_file :logo,
                       :styles => AvatarsForRails.avatarable_styles,
@@ -19,7 +19,7 @@ class Avatar < ActiveRecord::Base
 
   before_create :make_active
   after_create :disable_old
-  
+
   #This method helps when changing the active logo for a user.
   def make_active
     self.updating_logo = true
@@ -58,7 +58,9 @@ class Avatar < ActiveRecord::Base
   #Returns the avatars_for_rails temp directory.
   def self.images_tmp_path
     images_path = File.join(Rails.root, "public", "images")
-    tmp_path = FileUtils.mkdir_p(File.join(images_path, "tmp"))
+    tmp_path = File.join(images_path, "tmp")
+    FileUtils.mkdir_p(tmp_path)
+    return tmp_path
   end
 
   #This method copies a file to the avatars_for_rails temp directory.
