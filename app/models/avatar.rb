@@ -59,9 +59,9 @@ class Avatar < ActiveRecord::Base
   def self.images_tmp_path
     images_path = File.join(Rails.root, "public", "images")
     #tmp_path = FileUtils.mkdir_p(File.join(images_path, "tmp"))
-    tmp_path = File.join(images_path, "tmp")
-    FileUtils.mkdir_p(tmp_path)
-    return tmp_path
+    #tmp_path = File.join(images_path, "tmp")
+    #FileUtils.mkdir_p(tmp_path)
+    #return tmp_path
   end
 
   #This method copies a file to the avatars_for_rails temp directory.
