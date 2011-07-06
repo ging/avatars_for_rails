@@ -10,11 +10,15 @@ module AvatarsForRails
   mattr_accessor :current_avatarable_object
   mattr_accessor :avatarable_filters
   mattr_accessor :avatarable_styles
+  mattr_accessor :tmp_path
+  @@tmp_path = File.join('public', 'images', 'tmp')
   
    class << self
     def setup
       yield self
     end
+
+
    end
 
   class Engine < Rails::Engine
