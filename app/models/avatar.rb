@@ -57,9 +57,13 @@ class Avatar < ActiveRecord::Base
 
   #Returns the avatars_for_rails temp directory.
   def self.images_tmp_path
-    tmp_path = File.join(Rails.root, AvatarsForRails.tmp_path)
+    tmp_path = File.join(Rails.root, 'public', AvatarsForRails.tmp_path)
     FileUtils.mkdir_p(tmp_path)
     tmp_path
+  end
+
+  def self.image_tmp_path(tmp_image)
+    File.join '/', AvatarsForRails.tmp_path, tmp_image
   end
 
   #This method copies a file to the avatars_for_rails temp directory.
