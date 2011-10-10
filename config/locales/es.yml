@@ -1,0 +1,28 @@
+en:
+  actor:
+    name: "Nombre"
+  avatar:
+    crop_image: "Recorta la imagen"
+    crop_submit: "Recortar"
+    destroy: "Borrar avatar"
+    destroy_sure: "¿Borrar el avatar seleccionado?"
+    error:
+      no_file: "Tienes que seleccionar un fichero"
+      no_image_file: "El fichero no es válido, tiene que ser una imagen"
+    list: "Tienes estos avatars"
+    new: "Crear un nuevo avatar"
+    new_short: "Nuevo avatar"
+    no_avatars: "No tienes ningún avatar, ¡crea uno!"
+    one: "Avatar"
+    other: "Avatares"
+    original: "Imagen original"
+    preview: "Vista previa"
+    profile_change: "Cambia tu avatar"
+    set_default: "Seleccionar"
+    set_default_sure: "¿Seleccionar este avatar?"
+    text:
+      new: "... o sube uno nuevo"
+      use: "Usa uno de tus avatares..."
+    upload: "Subir"
+
+
