@@ -1,3 +1,10 @@
+//= require jquery
+//= require jquery-ui
+//= require jquery.Jcrop.min
+//= require jquery.form
+//= require jquery.fileupload
+//= require jquery.fileupload-ui
+
 $(document).ready( function() {
   //Full Caption Sliding (Hidden to Visible)
   $('.boxgrid.captionfull').hover( function() {

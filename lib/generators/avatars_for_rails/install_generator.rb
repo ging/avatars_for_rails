@@ -1,4 +1,3 @@
-#class AvatarsForRails::InstallGenerator < Rails::Generators::Base #:nodoc:
 class AvatarsForRails::InstallGenerator < Rails::Generators::NamedBase #:nodoc:
   include Rails::Generators::Migration
   
@@ -16,5 +15,17 @@ class AvatarsForRails::InstallGenerator < Rails::Generators::NamedBase #:nodoc:
   
   def create_migration_file
     migration_template 'migration.rb', 'db/migrate/create_avatars_for_rails_' + file_name + '.rb'
+  end
+
+  def require_javascripts
+    inject_into_file 'app/assets/javascripts/application.js',
+                     "//= require avatars_for_rails\n",
+                     :before => '//= require_tree .'
+  end
+
+  def require_stylesheets
+    inject_into_file 'app/assets/stylesheets/application.css',
+                     " *= require avatars_for_rails\n",
+                     :before => ' *= require_tree .'
   end
 end

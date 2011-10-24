@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   #s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
   # Gem dependencies
   #
+  s.add_runtime_dependency('jquery-rails', '>= 1.0.9')
   # SQL foreign keys
   s.add_runtime_dependency('foreigner', '>= 0.9.1')
   s.add_runtime_dependency('paperclip', '>= 2.3.4')
