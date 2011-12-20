@@ -103,10 +103,9 @@ class Avatar < ActiveRecord::Base
     return if !@name.blank?
 
     if resize_image(logo.queued_for_write[:original].path,500,500)
-      logo.errors['precrop'] = "You have to make precrop"
       Avatar.copy_to_temp_file(logo.queued_for_write[:original].path)
     else
-
+      logo.errors['precrop'] = "You have to make precrop"
     end
   end
 
