@@ -12,7 +12,7 @@ module AvatarsForRails
   mattr_accessor :avatarable_styles
   # The tmp path inside public/
   mattr_accessor :tmp_path
-  @@tmp_path = File.join('images', 'tmp')
+  @@tmp_path = File.join('system', 'tmp')
   
    class << self
     def setup
