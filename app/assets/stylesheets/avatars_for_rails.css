@@ -9,6 +9,7 @@
   font-size: 11px;
 }
 
+#avatars_for_rails img { max-width: none !important; }
 .clearfloat { clear: both;  height: 0px;}
 .space_center { padding-top: 9px; padding-right: 4px; text-align: center;}
 h2{padding-left:10px;font-size: 14px;color: #2A3890;}
