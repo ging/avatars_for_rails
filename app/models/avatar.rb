@@ -5,7 +5,7 @@ class Avatar < ActiveRecord::Base
   #Paperclip configuration.
   has_attached_file :logo,
                       :styles => AvatarsForRails.avatarable_styles,
-                      :default_url => "logos/:style/:subtype_class.png"
+                      :default_url => "/assets/logos/:style/:subtype_class.png"
 
   before_post_process :process_precrop
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :name,:updating_logo,:drag,:drag_name
