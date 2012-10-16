@@ -94,13 +94,13 @@ h2{padding-left:10px;font-size: 14px;color: #2A3890;}
 
 
 /*************REVIEW ********************/
-* { margin: 0;  padding: 0;} /*font-family: Arial;*/
+* { margin: 0;  padding: 0;}
 html, body {height: 100%;}
 .p {  margin: 0px;  padding: 0px; font-size: inherit; font-family: inherit; font-weight: inherit;
       text-align: inherit;  color: inherit; line-height: inherit; vertical-align: top;}
 p { padding-top: 0px; margin-top: 0px;}
 img { border: 0px;}
-div { margin: 0px;  padding: 0px; /*font-family: Helvetica; font-size: 11px;}*/
+div { margin: 0px;  padding: 0px; }
 .AbsWrap {  width: 100%;  position: relative;}
 .rowWrap {  width: 100%;}
 /**a:link,a:visited {  color: inherit; text-decoration: inherit;}**/
