@@ -50,7 +50,9 @@ class Avatar < ActiveRecord::Base
     make_precrop(precrop_path,@crop_x.to_i,@crop_y.to_i,@crop_w.to_i,@crop_h.to_i)
 
     self.name = @name
-    self.logo = File.open(precrop_path)
+    precropped = File.open(precrop_path)
+    self.logo = precropped
+    precropped.close
 
     FileUtils.remove_file(precrop_path)
   end
