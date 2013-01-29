@@ -70,8 +70,8 @@ class Avatar < ActiveRecord::Base
 
   #This method copies a file to the avatars_for_rails temp directory.
   def self.copy_to_temp_file(path)
+    FileUtils.chmod(0755, path) # make sure the file has adequite read permissions
     FileUtils.cp(path,Avatar.images_tmp_path)
-    FileUtils.chmod(0755, path)
   end
 
   #Returns the height and widht of an image.
