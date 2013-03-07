@@ -1,10 +1,14 @@
 AvatarsForRails.setup do |config|
-  config.avatarable_model = :<%= file_name %>
-  config.current_avatarable_object = :current_<%= file_name %>
-  config.avatarable_filters = []
-  config.avatarable_styles = { :representation => "20x20>",
-                                   :tie => "30x30>",
-                                   :actor => '35x35>',
-                                   :profile => '94x94'}
+  # Filters to run before updating the avatar
+  # config.controller_filters = [ :authenticate_user! ]
 
+  # The method to get the avatarable in the controller
+  # config.controller_filters = [ :current_user ]
+
+  # The default styles that will be generated
+  # config.avatarable_styles = { small:  '50x50',
+  #                              medium: '120x120' }
+
+  # The tmp path inside public/
+  # config.public_tmp_path = File.join('system', 'tmp')
 end
