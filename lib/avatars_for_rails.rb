@@ -1,3 +1,4 @@
+require 'RMagick'
 require 'jquery-rails'
 require 'flashy'
 require 'paperclip'
