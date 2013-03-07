@@ -27,6 +27,8 @@ module AvatarsForRails
 
 
     def check_avatar_aspect_ratio
+      return if logo.queued_for_write[:original].blank?
+
       FileUtils.cp logo.queued_for_write[:original].path, AvatarsForRails.tmp_path
 
       @avatar_tmp_basename = File.basename(logo.queued_for_write[:original].path)
