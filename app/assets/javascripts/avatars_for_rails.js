@@ -1,15 +1,71 @@
 //= require jquery
 //= require jquery-ui
-//= require jquery.Jcrop.min
+//= require jquery.Jcrop
 //= require jquery.form
 //= require jquery.fileupload
-//= require jquery.fileupload-ui
+// require jquery.fileupload-ui
+//= require flashy
 
-$(document).ready( function() {
-  //Full Caption Sliding (Hidden to Visible)
-  $('.boxgrid.captionfull').hover( function() {
-    $(".cover", this).stop().animate({top:'61px'},{queue:false,duration:160});
-  }, function() {
-    $(".cover", this).stop().animate({top:'104px'},{queue:false,duration:160});
-  });
-});
+var AvatarForRails = AvatarForRails || (function($, undefined) {
+  var editCallbacks = [];
+
+  var addEditCallback = function(callback){
+    editCallbacks.push(callback);
+  };
+
+  var edit = function(){
+    $.each(editCallbacks, function(i, callback){ callback(); });
+  };
+
+  var initFileUpload = function() {
+    $('input[name*="logo"]').fileupload({
+      dataType: 'json',
+      done: uploadDone
+    });
+  };
+
+  var uploadDone = function(e, data) {
+    if (data.result.redirect_path) {
+      window.location = data.result.redirect_path;
+    } else if (data.result.crop) {
+      initCrop(data.result.crop);
+    } else {
+      Flashy.message('error', data.result.errors);
+    }
+  };
+
+  var initCrop = function(data) {
+    var div = $('section.avatar .update');
+    div.html(data);
+    div.find('img.crop').Jcrop({
+      bgColor:     'clear',
+      bgOpacity:   0.6,
+      setSelect:   [ 0, 0, 200, 200 ],
+      aspectRatio: 1,
+      onSelect: updateCrop,
+      onChange: updateCrop
+    });
+  };
+
+  var updateCrop = function(coords) {
+    var img = $('section.avatar img.crop');
+    var iW = img.width();
+    var iH = img.height();
+
+    if ((coords.w === 0) || (coords.h === 0)){
+      coords.x = 0;
+      coords.y = 0;
+    }  
+  
+    $('input[name*="logo_crop_x"]').val(coords.x / iW);
+    $('input[name*="logo_crop_y"]').val(coords.y / iH);
+    $('input[name*="logo_crop_w"]').val(coords.w / iW);
+    $('input[name*="logo_crop_h"]').val(coords.h / iH);
+  };
+
+  addEditCallback(initFileUpload);
+
+  return {
+    edit: edit
+  };
+})(jQuery);

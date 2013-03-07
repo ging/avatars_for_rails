@@ -1,7 +1,0 @@
-<% if !@avatar.logo.errors['precrop'].blank? %>
-	<%= render :partial => 'precrop' %>
-<% elsif !@avatar.errors.blank? %>
-  <%= render :partial => 'errors' %>
-<% else %>
-<% end %>
-

@@ -1,6 +1,3 @@
 Rails.application.routes.draw do
-  
-  resources :avatars
-
-
+  resource :avatar
 end

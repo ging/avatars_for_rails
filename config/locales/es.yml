@@ -9,6 +9,7 @@ es:
     error:
       no_file: "Tienes que seleccionar un fichero"
       no_image_file: "El fichero no es válido, tiene que ser una imagen"
+      no_width: "La selección no puede estar vacía"
     list: "Tienes estos avatars"
     new: "Crear un nuevo avatar"
     new_short: "Nuevo avatar"

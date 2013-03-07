@@ -1,38 +1,13 @@
-<div id ="avatars_for_rails">
-<!--  
-<div class= "block">
-    <div class = "content">
-      <%= form_for Avatar.new,:html => { :multipart => true,:id =>"uploadForm"} do |f| %>
-        <div class="form_row">
-          <%= f.file_field :logo %>
+<%= form_for avatarable, url: avatar_path, multipart: true do |f| %>
+  <%= f.file_field :logo, "data-url" => avatar_path %>
+<% end %>
 
-          <%= f.submit t('avatar.upload'), :class => "button" %>
-        </div>
-        <div id= "prueba">
-        </div>
-      <% end %>
-    </div>
-  
-  </div>
--->
-  <div class="files"> 
-    <%= form_for Avatar.new, :html => { :class => "upload", :multipart => true } do |f| %>
-      <%= f.file_field :logo, :id=> "avatar_logo_drag" %>
-      <!--<div>Upload files</div>-->
-      <%= f.hidden_field :drag %>
-    <% end %>
+<% content_for :javascript do %>
+  $(function() {
+    AvatarForRails.edit();
+  });
+<% end %>
 
-    <table class="upload_files"></table>
-    <table class="download_files"></table>
-    <div id="show_pic"></div>
-    <div id="show_crop"></div>
-  </div>
-
-  <div id= "precrop_drag_response"></div>
-</div>
-
-
-<% content_for :javascript do%>
 $(document).ready(function() { 
     var options = { 
         target: '#precrop_drag_response',
@@ -44,44 +19,6 @@ $(document).ready(function() {
         return false; 
     }); 
 }); 
-
-function update_crop(coords) {
-  var rx = 100/coords.w;
-  var ry = 100/coords.h;
-  
-  if((coords.w == 0) || (coords.h == 0)){
-    rx = 100/$("#cropImage").width();
-    ry = 100/$("#cropImage").height();
-    coords.x = 0;
-    coords.y = 0;
-  }  
-  
-  $('#preview').css({
-    width: Math.round(rx * $("#cropImage").width()) + 'px',
-    height: Math.round(ry * $("#cropImage").height()) + 'px',
-    marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-    marginTop: '-' + Math.round(ry * coords.y) + 'px'
-  });
-  var ratio = 1;
-  $("#crop_x").val(Math.round(coords.x * ratio));
-  $("#crop_y").val(Math.round(coords.y * ratio));
-  $("#crop_w").val(Math.round(coords.w * ratio));
-  $("#crop_h").val(Math.round(coords.h * ratio));
-}
-
-function showResponse(responseText, statusText, xhr, $form)  { 
-        jQuery('#cropImage').Jcrop({
-            bgColor:     'clear',
-            bgOpacity:   .6,
-            setSelect:   [ 0, 0, 200, 200 ],
-            aspectRatio: 1 ,
-            onChange: update_crop,
-            onSelect: update_crop
-        }); 
-} 
-
-
-
 
 
   $(function () {
@@ -119,12 +56,3 @@ function showResponse(responseText, statusText, xhr, $form)  {
           }
       });
   }); 
-
-
-
-
-
-
-
- <% end %>
-

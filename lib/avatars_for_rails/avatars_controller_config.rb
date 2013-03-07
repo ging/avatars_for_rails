@@ -1,4 +1,0 @@
-module AvatarsForRails::AvatarsControllerConfig
-  
-  
-end

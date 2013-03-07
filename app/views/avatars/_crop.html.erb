@@ -1,0 +1,10 @@
+<%= image_tag avatarable.avatar_tmp_public_path(root_path), class: 'crop' %>
+
+<%= form_for avatarable, url: avatar_path, multipart: true do |f| %>
+  <% %w( x y w h ).each do |attr| %>
+    <%= f.hidden_field "logo_crop_#{ attr }" %>
+  <% end %>
+    <%= f.hidden_field :avatar_tmp_basename %>
+
+  <%= f.submit t('avatar.crop_submit'), class: "btn" %>
+<% end %>

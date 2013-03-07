@@ -1,7 +1,10 @@
-= AvatarsForRails
+= Avatars For Rails
 
-This project rocks and uses MIT-LICENSE.
+Avatars For Rails is a integral solution to provide a model with avatar support.
 
+It includes a database migration and views with jquery.fileupload and jquery.jcrop
+
+It relies on paperclip and imagemagick
 
 = Installation
 
@@ -15,9 +18,10 @@ and run:
 
 Then, if you have a class named actor and you want it to have avatars, run:
 
-  rails generate avatars_for_rails:install actor
+  rails generate avatars_for_rails:install user
 
 This will generate the following:
+
 * A initializer file with configuration for avatars_for_rails.
 * A migration providing the database schema for using avatars_for_rails with the actor class.
 
@@ -25,77 +29,22 @@ Do not forget to migrate your database
 
   rake db:migrate
   
-In your application layout you have to add  this on the <head> label:
+In your model, you must include:
 
-  <head>
-    <% stylesheet_link_tag :all %>
-    <% javascript_include_tag :defaults %>
-    <%= yield :headers %>
-    <%= csrf_meta_tag %>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
-          <%= yield :javascript %>
-        })
-    </script>
-  </head>
-
-In config/initializers/avatars_for_rails.rb  you have to define:
-
-  AvatarsForRails.setup do |config|
-    config.avatarable_model = :actor
-    config.current_avatarable_object = :current_actor
-    config.avatarable_filters = [:authenticate_user!]
-    config.avatarable_styles = { :representation => "20x20>",
-                                   :tie => "30x30>",
-                                   :actor => '35x35>',
-                                   :profile => '94x94'}
+  class User < ActiveRecord::Base
+    acts_as_avatarable
   end
 
-* actor is the name of the object owner of the avatars    
-* current_actor will return the actor you wants to be the owner of the new avatars, etc For example, you can return the current logged in actor. This method can be defined on the application_controller of your app.
-* authenticate_user! is the filter which will be applied as a before_filter for the avatars. You can use as many as you want.
-* styles are the styles you want to have for your avatars. You can use your own sizes.
-
-Finally, add to your actor model the relation with avatars_for_rails:
-
-  has_many :avatars
-  
-Now, if you go to /avatars you will see:
-* A list of all the avatars for the current actor. You can change the default and delete avatars in this list.  
-* Forms for creating a new avatar with two options. A typical file filed or a drag and drop file field
-
-Of course, you can overwrite the index.html.erb so you can personalize the index.
-
-For rendering the avatars list:
-  <%= render :partial => 'list' %>
-  
 For rendering the new avatar form:
   <%= render :partial => 'form' %>
   
-For include the javacript and css files:
-  <%= render :partial => 'includes' %>
-or  
-  <% content_for :headers do %>
-    <%= javascript_include_tag 'jquery' %>
-    <%= javascript_include_tag 'jquery.Jcrop.min' %>
-    <%= javascript_include_tag 'jquery-ui.min' %>
-    <%= javascript_include_tag 'rails' %>
-    <%= javascript_include_tag 'avatars' %>
-    <%= javascript_include_tag 'jquery.form' %>
-    <%= javascript_include_tag 'jquery.fileupload' %>
-    <%= javascript_include_tag 'jquery.fileupload-ui' %>
-    <%= stylesheet_link_tag "jquery.Jcrop", :media => "screen, projection" %>
-    <%= stylesheet_link_tag "avatars", :media => "screen, projection" %><br/>
-    <%= stylesheet_link_tag "jquery.fileupload-ui", :media => "screen, projection" %><br/>
-  <%end%>
+You must include the javascript and css files
+
+  //= require avatars_for_rails
+
+ 
+If you want to get an actor's avatar you can do: 
+  user.logo
   
-If you want to get an actor's active avatar you can do: 
-  actor.avatars.active.first 
-  
-For rendering an image_tag for an acctor's avatar:
-  <%= image_tag(avatar.logo.url(:style) ) %>
-  
-If you wan't to display an actor's active avatar:
-  <%= image_tag(actor.avatars.active.first, :id => "current_avatar_img") %>
-  
-The id of the image it's important. If it's set like this, when you change the default avatar from the list, it will change the avatar shown on the image with jquery.
+For rendering an image_tag for an user's avatar:
+  <%= image_tag(user.logo.url(:style) ) %>
