@@ -2,6 +2,8 @@
   <%= f.file_field :logo, "data-url" => avatar_path %>
 <% end %>
 
+<%= render partial: 'avatars/progress' %>
+
 <% content_for :javascript do %>
   $(function() {
     AvatarForRails.edit();
