@@ -3,6 +3,9 @@ module AvatarsForRails
     extend ActiveSupport::Concern
 
     included do
+      cattr_accessor :logo_aspect_ratio
+      self.logo_aspect_ratio = 1
+
       attr_accessor :logo_crop, :logo_crop_x, :logo_crop_y, :logo_crop_w, :logo_crop_h,
                     :avatar_tmp_basename
 
@@ -43,7 +46,7 @@ module AvatarsForRails
     def validate_crop_params
       return if logo_crop_x.blank?
 
-      %w( x y w h ).each do |attr|
+      %w( x y w ).each do |attr|
         send "logo_crop_#{ attr }=", send("logo_crop_#{ attr }").to_f
       end
 
@@ -57,10 +60,12 @@ module AvatarsForRails
 
       width, height = avatar_tmp_file_dimensions
 
-      avatar_magick_image.crop!(logo_crop_x * width,
-                                logo_crop_y * height,
-                                logo_crop_w * width,
-                                logo_crop_h * height)
+      crop_x = (logo_crop_x * width).round
+      crop_y = (logo_crop_y * height).round
+      crop_w = (logo_crop_w * width).round
+      crop_h = crop_w / self.class.logo_aspect_ratio
+
+      avatar_magick_image.crop!(crop_x, crop_y, crop_w, crop_h)
 
       avatar_magick_image.write(avatar_tmp_full_path)
 

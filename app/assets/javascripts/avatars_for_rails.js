@@ -46,13 +46,20 @@ var AvatarForRails = AvatarForRails || (function($, undefined) {
   };
 
   var initCrop = function(data) {
-    var div = $('section.avatar .update');
+    var div = $('section.avatar .update'),
+        img,
+        ar;
+
     div.html(data);
-    div.find('img.crop').Jcrop({
+
+    img = div.find('img.crop'),
+    ar  = parseInt(img.attr('data-aspect_ratio'), 10);
+   
+    img.Jcrop({
       bgColor:     'clear',
       bgOpacity:   0.6,
-      setSelect:   [ 0, 0, 200, 200 ],
-      aspectRatio: 1,
+      setSelect:   [ 0, 0, 200, 200 / ar ],
+      aspectRatio: ar,
       onSelect: updateCrop,
       onChange: updateCrop
     });
@@ -71,7 +78,6 @@ var AvatarForRails = AvatarForRails || (function($, undefined) {
     $('input[name*="logo_crop_x"]').val(coords.x / iW);
     $('input[name*="logo_crop_y"]').val(coords.y / iH);
     $('input[name*="logo_crop_w"]').val(coords.w / iW);
-    $('input[name*="logo_crop_h"]').val(coords.h / iH);
   };
 
   addEditCallback(initFileUpload);
