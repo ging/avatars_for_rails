@@ -3,7 +3,7 @@ AvatarsForRails.setup do |config|
   # config.controller_filters = [ :authenticate_user! ]
 
   # The method to get the avatarable in the controller
-  # config.controller_filters = [ :current_user ]
+  # config.controller_avatarable = [ :current_user ]
 
   # The default styles that will be generated
   # config.avatarable_styles = { small:  '50x50',
