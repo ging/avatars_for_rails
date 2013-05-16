@@ -56,7 +56,7 @@ module AvatarsForRails
     end
 
     def crop_avatar
-      return unless avatar_tmp_file?
+      return unless logo_crop_x && avatar_tmp_file?
 
       width, height = avatar_tmp_file_dimensions
 
