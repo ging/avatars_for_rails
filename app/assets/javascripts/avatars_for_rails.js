@@ -46,13 +46,14 @@ var AvatarForRails = AvatarForRails || (function($, undefined) {
   };
 
   var initCrop = function(data) {
-    var div = $('section.avatar .update'),
+    var div = $('.avatar-update'),
         img,
         ar;
 
+    $('#avatar-progress .bar').css('width', '0%');
     div.html(data);
 
-    img = div.find('img.crop'),
+    img = div.find('img.avatar-crop'),
     ar  = parseInt(img.attr('data-aspect_ratio'), 10);
    
     img.Jcrop({
@@ -66,7 +67,7 @@ var AvatarForRails = AvatarForRails || (function($, undefined) {
   };
 
   var updateCrop = function(coords) {
-    var img = $('section.avatar img.crop');
+    var img = $('img.avatar-crop');
     var iW = img.width();
     var iH = img.height();
 

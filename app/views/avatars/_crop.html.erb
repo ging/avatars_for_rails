@@ -1,4 +1,4 @@
-<%= image_tag avatarable.avatar_tmp_public_path(root_path), class: 'crop', "data-aspect_ratio" => avatarable.class.logo_aspect_ratio %>
+<%= image_tag avatarable.avatar_tmp_public_path(root_path), class: 'avatar-crop', "data-aspect_ratio" => avatarable.class.logo_aspect_ratio %>
 
 <%= form_for avatarable, url: avatar_path, multipart: true do |f| %>
   <% %w( x y w ).each do |attr| %>
