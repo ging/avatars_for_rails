@@ -14,7 +14,8 @@ Gem::Specification.new do |s|
 
   # Gem dependencies
   #
-  s.add_runtime_dependency('jquery-rails', '>= 1.0.9')
+  s.add_runtime_dependency('jquery-rails', '>= 3.0.0')
+  s.add_runtime_dependency('jquery-ui-rails', '>= 4.0.0')
   s.add_runtime_dependency('flashy', '~> 0.0.1')
   s.add_runtime_dependency('paperclip', '>= 2.3.4')
 
