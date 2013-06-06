@@ -32,9 +32,7 @@ module AvatarsForRails
     def check_avatar_aspect_ratio
       return if logo.queued_for_write[:original].blank?
 
-      FileUtils.cp logo.queued_for_write[:original].path, AvatarsForRails.tmp_path
-
-      @avatar_tmp_basename = File.basename(logo.queued_for_write[:original].path)
+      cp_avatar_to_tmp_path
 
       dimensions = avatar_tmp_file_dimensions
 
@@ -88,6 +86,14 @@ module AvatarsForRails
     def avatar_magick_image
       @avatar_magick_image ||=
         Magick::Image.read(avatar_tmp_full_path).first
+    end
+
+    def cp_avatar_to_tmp_path
+      FileUtils.cp logo.queued_for_write[:original].path, AvatarsForRails.tmp_path
+
+      @avatar_tmp_basename = File.basename(logo.queued_for_write[:original].path)
+
+      FileUtils.chmod(0644, avatar_tmp_full_path)
     end
   end
 end
