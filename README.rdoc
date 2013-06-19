@@ -36,7 +36,9 @@ In your model, you must include:
   end
 
 For rendering the new avatar form:
-  <%= render :partial => 'avatars/form' %>
+  <%= render partial: 'avatars/form',
+             object: @user,
+             as: :avatarable %>
   
 You must include the javascript and css files
 
