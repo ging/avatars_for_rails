@@ -6,7 +6,7 @@
 
 <%= render partial: 'avatars/progress' %>
 
-<% content_for :javascript do %>
+<%= javascript_tag do %>
   $(function() {
     AvatarForRails.edit();
   });
