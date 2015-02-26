@@ -16,14 +16,14 @@ and run:
 
   bundle update
 
-Then, if you have a class named actor and you want it to have avatars, run:
+Then, if you have a class named user and you want it to have avatars, run:
 
   rails generate avatars_for_rails:install user
 
 This will generate the following:
 
 * A initializer file with configuration for avatars_for_rails.
-* A migration providing the database schema for using avatars_for_rails with the actor class.
+* A migration providing the database schema for using avatars_for_rails with the user class.
 
 Do not forget to migrate your database
 
@@ -45,7 +45,7 @@ You must include the javascript and css files
   //= require avatars_for_rails
 
  
-If you want to get an actor's avatar you can do: 
+If you want to get an user's avatar you can do: 
   user.logo
   
 For rendering an image_tag for an user's avatar:
